@@ -9,7 +9,7 @@ require('dotenv').config()
 connectDb();
 
 app.use(express.json())
- 
+
 app.get('/', (req, res) => {
     res.send('Hello Express Routes!')
 })
@@ -18,8 +18,8 @@ app.use('/api/user', userRoutes)
 app.use('/api/chat', chatRoutes)
 app.use('/api/message', messageRoutes)
 
-const server = app.listen(process.env.PORT, () => {
-    // console.log(`App running`)
+const server = app.listen(process.env.PORT || 5000, () => {
+    // console.log(`App running ${process.env.PORT}`)
 })
 
 const io = require('socket.io')(server, {
